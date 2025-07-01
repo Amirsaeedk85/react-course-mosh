@@ -1,8 +1,17 @@
-import Message from "./message.tsx";
+import ListGroup from "./components/ListGroup";
 function App() {
+  const items = ["Newyork", "Sanfrancisco", "London"];
+  const handleSelectItem = (item: string) => {
+    console.log(item);
+  };
+
   return (
     <div>
-      <Message />
+      <ListGroup
+        items={items}
+        heading="ListGroup"
+        onSelectItem={handleSelectItem}
+      />
     </div>
   );
 }
