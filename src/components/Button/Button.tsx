@@ -1,3 +1,4 @@
+import styles from "./Button.module.css";
 interface Props {
   children: string;
   color?:
@@ -11,9 +12,13 @@ interface Props {
     | "dark";
   buttonClicked: () => void;
 }
-const Button = ({ children, buttonClicked }: Props) => {
+const Button = ({ children, buttonClicked, color }: Props) => {
   return (
-    <button type="button" className="btn btn-primary" onClick={buttonClicked}>
+    <button
+      type="button"
+      className={[styles.btn, styles["btn-" + color]].join(" ")}
+      onClick={buttonClicked}
+    >
       {children}
     </button>
   );
