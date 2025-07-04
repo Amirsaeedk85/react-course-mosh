@@ -1,13 +1,32 @@
-import Navbar from "./components/navbar";
-import Cart from "./components/Cart";
 import { useState } from "react";
 function App() {
-  const [cart, setCart] = useState(["product1", "product2"]);
+  const [game, setGame] = useState({
+    discount: 0.1,
+    items: [
+      { id: 1, title: "Product 1", quantity: 1 },
+      { id: 2, title: "Product 2", quantity: 1 },
+    ],
+  });
+  const increaseItem = () =>
+    setGame({
+      ...game,
+      items: game.items.map((item) =>
+        item.id === 1 ? { ...item, quantity: item.quantity + 1 } : item
+      ),
+    });
 
   return (
     <>
-      <Navbar itemsLenght={cart.length}></Navbar>
-      <Cart cartItems={cart} onClear={() => setCart([])}></Cart>
+      <ul>
+        {game.items.map((item) => (
+          <li>
+            <span>
+              {item.title} : {item.quantity}
+            </span>
+          </li>
+        ))}
+      </ul>
+      <button onClick={increaseItem}>increase</button>
     </>
   );
 }
