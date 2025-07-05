@@ -1,9 +1,10 @@
 import { useState } from "react";
 import ExpandibleText from "./components/ExpandibleText";
+import Form from "./components/Form";
 function App() {
   return (
     <>
-      <ExpandibleText maxChars={10}>Lorem</ExpandibleText>
+      <Form></Form>
     </>
   );
 }
