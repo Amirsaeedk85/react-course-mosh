@@ -27,7 +27,6 @@ const Form = ({ formUpdated, categories }: Props) => {
   const [category, setCategory] = useState("");
 
   const handleSelectChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    console.log(e.target.value);
     setCategory(e.target.value);
   };
 
@@ -36,9 +35,13 @@ const Form = ({ formUpdated, categories }: Props) => {
     register,
     handleSubmit,
     formState: { errors, isValid },
+    reset,
   } = form;
 
-  const onSubmit = (data: FieldValues) => formUpdated(data);
+  const onSubmit = (data: FieldValues) => {
+    formUpdated(data);
+    reset();
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
